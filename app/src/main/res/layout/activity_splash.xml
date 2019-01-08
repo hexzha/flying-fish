@@ -22,7 +22,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="130dp"
-        android:text="The Flying Fish"
+        android:text="The Flying Fish Game"
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textSize="30sp"
