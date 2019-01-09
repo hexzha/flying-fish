@@ -33,9 +33,9 @@ public class FlyingFishView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        canvas.drawBitmap(fish, 0, 0, null);
         canvas.drawBitmap(backgroundImage, 0, 0, null);
-        canvas.drawText("Score: ", 20, 60, null);
+        canvas.drawBitmap(fish, 0, 0, null);
+        canvas.drawText("Score: ", 20, 60, scorePaint);
 
         canvas.drawBitmap(life[0], 580, 10, null);
         canvas.drawBitmap(life[0], 680, 10, null);
