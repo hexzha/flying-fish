@@ -16,12 +16,17 @@ public class FlyingFishView extends View {
     private Bitmap life[] = new Bitmap[2];
     private Paint scorePaint = new Paint();
 
-    private int fishX = 10;
-    private int fishY;
-    private int fishSpeed;
+    private int fishX = 10, fishY, fishSpeed;
     private int canvasWidth, canvasHeight;
 
+    private int yellowX, yellowY, yellowSpeed = 16;
+    private Paint yellowPaint = new Paint();
+
+    private int greenX, greenY, greenSpeed = 20;
+    private Paint greenPaint = new Paint();
+
     private boolean touch = false;
+    private int score;
 
     public FlyingFishView(Context context) {
         super(context);
@@ -38,7 +43,11 @@ public class FlyingFishView extends View {
         scorePaint.setTypeface(Typeface.DEFAULT_BOLD);
         scorePaint.setAntiAlias(true);
 
+        yellowPaint.setColor(Color.YELLOW);
+        yellowPaint.setAntiAlias(false);
+
         fishY = 550;
+        score = 0;
     }
 
     @Override
@@ -61,7 +70,6 @@ public class FlyingFishView extends View {
         fishSpeed = fishSpeed + 2;
 
         canvas.drawBitmap(backgroundImage, 0, 0, null);
-        canvas.drawText("Score: ", 20, 60, scorePaint);
 
         canvas.drawBitmap(life[0], 580, 10, null);
         canvas.drawBitmap(life[0], 680, 10, null);
@@ -73,6 +81,30 @@ public class FlyingFishView extends View {
         } else {
             canvas.drawBitmap(fish[0], fishX, fishY, null);
         }
+
+        yellowX = yellowX - yellowSpeed;
+
+        if(hitBallChecker(yellowX, yellowY)) {
+            score += 10;
+            yellowX = -1;
+        }
+
+        if(yellowX < 0) {
+            yellowX = canvasWidth+ 21;
+            yellowY = (int) Math.floor(Math.random() * (maxFishY - minFishY) + minFishY);
+        }
+
+        canvas.drawCircle(yellowX, yellowY, 25, yellowPaint);
+
+        canvas.drawText("Score: " + score, 20, 60, scorePaint);
+
+    }
+
+    public boolean hitBallChecker(int x, int y){
+        if(fishX < x && x < (fishX + fish[0].getWidth()) && fishY < y && y < (fishY + fish[0].getHeight())){
+            return true;
+        }
+        return false;
     }
 
     @Override
