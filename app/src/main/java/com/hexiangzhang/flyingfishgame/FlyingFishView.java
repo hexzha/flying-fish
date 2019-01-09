@@ -48,20 +48,24 @@ public class FlyingFishView extends View {
         canvasWidth = canvas.getWidth();
         canvasHeight = canvas.getHeight();
 
-        canvas.drawBitmap(backgroundImage, 0, 0, null);
-
         int minFishY = fish[0].getHeight();
         int maxFishY = canvas.getHeight() - fish[0].getHeight() * 3;
+        fishY = fishY + fishSpeed;
 
         if (fishY < minFishY) {
             fishY = minFishY;
-        }
-
-        if (fishY > maxFishY) {
+        } else if (fishY > maxFishY) {
             fishY = maxFishY;
         }
 
         fishSpeed = fishSpeed + 2;
+
+        canvas.drawBitmap(backgroundImage, 0, 0, null);
+        canvas.drawText("Score: ", 20, 60, scorePaint);
+
+        canvas.drawBitmap(life[0], 580, 10, null);
+        canvas.drawBitmap(life[0], 680, 10, null);
+        canvas.drawBitmap(life[0], 780, 10, null);
 
         if (touch) {
             canvas.drawBitmap(fish[1], fishX, fishY, null);
@@ -69,13 +73,6 @@ public class FlyingFishView extends View {
         } else {
             canvas.drawBitmap(fish[0], fishX, fishY, null);
         }
-
-        canvas.drawText("Score: ", 20, 60, scorePaint);
-
-        canvas.drawBitmap(life[0], 580, 10, null);
-        canvas.drawBitmap(life[0], 680, 10, null);
-        canvas.drawBitmap(life[0], 780, 10, null);
-
     }
 
     @Override
@@ -84,9 +81,6 @@ public class FlyingFishView extends View {
             touch = true;
 
             fishSpeed = -22;
-            if (fishSpeed < 0) {
-                fishSpeed = 0;
-            }
         }
         return true;
     }
