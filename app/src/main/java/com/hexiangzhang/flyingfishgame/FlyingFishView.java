@@ -93,13 +93,13 @@ public class FlyingFishView extends View {
 
         yellowX = yellowX - yellowSpeed;
 
-        if(hitBallChecker(yellowX, yellowY)) {
+        if (hitBallChecker(yellowX, yellowY)) {
             score += 10;
             yellowX = -1;
         }
 
-        if(yellowX < 0) {
-            yellowX = canvasWidth+ 21;
+        if (yellowX < 0) {
+            yellowX = canvasWidth + 21;
             yellowY = (int) Math.floor(Math.random() * (maxFishY - minFishY) + minFishY);
         }
 
@@ -108,13 +108,13 @@ public class FlyingFishView extends View {
 
         greenX = greenX - greenSpeed;
 
-        if(hitBallChecker(greenX, greenY)) {
+        if (hitBallChecker(greenX, greenY)) {
             score += 15;
             greenX = -1;
         }
 
-        if(greenX < 0) {
-            greenX = canvasWidth+ 21;
+        if (greenX < 0) {
+            greenX = canvasWidth + 21;
             greenY = (int) Math.floor(Math.random() * (maxFishY - minFishY) + minFishY);
         }
 
@@ -123,25 +123,25 @@ public class FlyingFishView extends View {
 
         redX = redX - redSpeed;
 
-        if(hitBallChecker(redX, redY)) {
+        if (hitBallChecker(redX, redY)) {
             score += 15;
             redX = -1;
         }
 
-        if(redX < 0) {
-            redX = canvasWidth+ 21;
+        if (redX < 0) {
+            redX = canvasWidth + 21;
             redY = (int) Math.floor(Math.random() * (maxFishY - minFishY) + minFishY);
         }
 
         canvas.drawCircle(redX, redY, 30, redPaint);
 
-        
+
         canvas.drawText("Score: " + score, 20, 60, scorePaint);
 
     }
 
-    public boolean hitBallChecker(int x, int y){
-        if(fishX < x && x < (fishX + fish[0].getWidth()) && fishY < y && y < (fishY + fish[0].getHeight())){
+    public boolean hitBallChecker(int x, int y) {
+        if (fishX < x && x < (fishX + fish[0].getWidth()) && fishY < y && y < (fishY + fish[0].getHeight())) {
             return true;
         }
         return false;
