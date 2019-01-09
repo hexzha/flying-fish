@@ -84,6 +84,9 @@ public class FlyingFishView extends View {
             touch = true;
 
             fishSpeed = -22;
+            if(fishSpeed < 0) {
+                fishSpeed = 0;
+            }
         }
         return true;
     }
