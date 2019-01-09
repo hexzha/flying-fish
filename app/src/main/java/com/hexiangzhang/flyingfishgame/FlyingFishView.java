@@ -9,6 +9,7 @@ import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 public class FlyingFishView extends View {
     private Bitmap fish[] = new Bitmap[2];
@@ -29,7 +30,7 @@ public class FlyingFishView extends View {
     private Paint redPaint = new Paint();
 
     private boolean touch = false;
-    private int score;
+    private int score, lifeCounterOfFish;
 
     public FlyingFishView(Context context) {
         super(context);
@@ -57,6 +58,7 @@ public class FlyingFishView extends View {
 
         fishY = 550;
         score = 0;
+        lifeCounterOfFish = 3;
     }
 
     @Override
@@ -80,9 +82,6 @@ public class FlyingFishView extends View {
 
         canvas.drawBitmap(backgroundImage, 0, 0, null);
 
-        canvas.drawBitmap(life[0], 580, 10, null);
-        canvas.drawBitmap(life[0], 680, 10, null);
-        canvas.drawBitmap(life[0], 780, 10, null);
 
         if (touch) {
             canvas.drawBitmap(fish[1], fishX, fishY, null);
@@ -124,8 +123,12 @@ public class FlyingFishView extends View {
         redX = redX - redSpeed;
 
         if (hitBallChecker(redX, redY)) {
-            score += 15;
+            lifeCounterOfFish--;
             redX = -1;
+
+            if(lifeCounterOfFish == 0) {
+                Toast.makeText(getContext(), "Game Over", Toast.LENGTH_SHORT).show();
+            }
         }
 
         if (redX < 0) {
@@ -134,6 +137,18 @@ public class FlyingFishView extends View {
         }
 
         canvas.drawCircle(redX, redY, 30, redPaint);
+
+        for(int i = 0; i < 3; i++) {
+            int x = (int) (550 + life[0].getWidth() * 1.5 * i);
+            int y = 30;
+
+            if(i< lifeCounterOfFish){
+                canvas.drawBitmap(life[0], x, y, null);
+            } else {
+                canvas.drawBitmap(life[1], x, y, null);
+
+            }
+        }
 
 
         canvas.drawText("Score: " + score, 20, 60, scorePaint);
