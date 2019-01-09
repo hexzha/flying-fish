@@ -10,7 +10,7 @@ import android.graphics.Typeface;
 import android.view.View;
 
 public class FlyingFishView extends View {
-    private Bitmap fish;
+    private Bitmap fish[] = new Bitmap[2];
     private Bitmap backgroundImage;
     private Bitmap life[] = new Bitmap[2];
     private Paint scorePaint = new Paint();
@@ -18,7 +18,9 @@ public class FlyingFishView extends View {
     public FlyingFishView(Context context) {
         super(context);
 
-        fish = BitmapFactory.decodeResource(getResources(), R.drawable.fish1);
+        fish[0] = BitmapFactory.decodeResource(getResources(), R.drawable.fish1);
+        fish[1] = BitmapFactory.decodeResource(getResources(), R.drawable.fish2);
+
         backgroundImage = BitmapFactory.decodeResource(getResources(), R.drawable.background);
         life[0] = BitmapFactory.decodeResource(getResources(), R.drawable.hearts);
         life[1] = BitmapFactory.decodeResource(getResources(), R.drawable.heart_grey);
