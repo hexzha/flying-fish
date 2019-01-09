@@ -126,7 +126,7 @@ public class FlyingFishView extends View {
             lifeCounterOfFish--;
             redX = -1;
 
-            if(lifeCounterOfFish == 0) {
+            if (lifeCounterOfFish == 0) {
                 Toast.makeText(getContext(), "Game Over", Toast.LENGTH_SHORT).show();
             }
         }
@@ -138,11 +138,11 @@ public class FlyingFishView extends View {
 
         canvas.drawCircle(redX, redY, 30, redPaint);
 
-        for(int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
             int x = (int) (550 + life[0].getWidth() * 1.5 * i);
             int y = 30;
 
-            if(i< lifeCounterOfFish){
+            if (i < lifeCounterOfFish) {
                 canvas.drawBitmap(life[0], x, y, null);
             } else {
                 canvas.drawBitmap(life[1], x, y, null);
