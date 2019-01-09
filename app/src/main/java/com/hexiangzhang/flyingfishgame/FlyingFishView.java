@@ -51,19 +51,19 @@ public class FlyingFishView extends View {
         canvas.drawBitmap(backgroundImage, 0, 0, null);
 
         int minFishY = fish[0].getHeight();
-        int maxFishY = canvas.getHeight() - fish[0].getHeight()*3;
+        int maxFishY = canvas.getHeight() - fish[0].getHeight() * 3;
 
-        if(fishY < minFishY) {
+        if (fishY < minFishY) {
             fishY = minFishY;
         }
 
-        if(fishY > maxFishY) {
+        if (fishY > maxFishY) {
             fishY = maxFishY;
         }
 
         fishSpeed = fishSpeed + 2;
 
-        if(touch){
+        if (touch) {
             canvas.drawBitmap(fish[1], fishX, fishY, null);
             touch = false;
         } else {
@@ -80,11 +80,11 @@ public class FlyingFishView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if(event.getAction() ==MotionEvent.ACTION_DOWN) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
             touch = true;
 
             fishSpeed = -22;
-            if(fishSpeed < 0) {
+            if (fishSpeed < 0) {
                 fishSpeed = 0;
             }
         }
