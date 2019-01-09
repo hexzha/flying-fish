@@ -1,8 +1,8 @@
 package com.hexiangzhang.flyingfishgame;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -16,11 +16,9 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 try {
                     sleep(5000);
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     e.printStackTrace();
-                }
-                finally {
+                } finally {
                     Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
                     startActivity(mainIntent);
                 }
