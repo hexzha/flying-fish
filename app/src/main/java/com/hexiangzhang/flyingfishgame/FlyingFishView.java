@@ -37,6 +37,8 @@ public class FlyingFishView extends View {
         scorePaint.setTextSize(70);
         scorePaint.setTypeface(Typeface.DEFAULT_BOLD);
         scorePaint.setAntiAlias(true);
+
+        fishY = 550;
     }
 
     @Override
@@ -58,6 +60,8 @@ public class FlyingFishView extends View {
         if(fishY > maxFishY) {
             fishY = maxFishY;
         }
+
+        fishSpeed = fishSpeed + 2;
 
         if(touch){
             canvas.drawBitmap(fish[1], fishX, fishY, null);
@@ -81,6 +85,6 @@ public class FlyingFishView extends View {
 
             fishSpeed = -22;
         }
-        return true
+        return true;
     }
 }
