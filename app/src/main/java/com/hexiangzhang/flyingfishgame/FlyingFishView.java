@@ -83,7 +83,6 @@ public class FlyingFishView extends View {
 
         canvas.drawBitmap(backgroundImage, 0, 0, null);
 
-
         if (touch) {
             canvas.drawBitmap(fish[1], fishX, fishY, null);
             touch = false;
@@ -105,7 +104,6 @@ public class FlyingFishView extends View {
 
         canvas.drawCircle(yellowX, yellowY, 25, yellowPaint);
 
-
         greenX = greenX - greenSpeed;
 
         if (hitBallChecker(greenX, greenY)) {
@@ -119,7 +117,6 @@ public class FlyingFishView extends View {
         }
 
         canvas.drawCircle(greenX, greenY, 25, greenPaint);
-
 
         redX = redX - redSpeed;
 
@@ -155,7 +152,6 @@ public class FlyingFishView extends View {
 
             }
         }
-
 
         canvas.drawText("Score: " + score, 20, 60, scorePaint);
 
