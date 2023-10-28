@@ -1,1 +1,3 @@
-# Flying_Fish_Game
+### Flying Fish Game
+
+Quick mobile app
